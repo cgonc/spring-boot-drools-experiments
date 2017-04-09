@@ -4,16 +4,16 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.sctrcd</groupId>
-    <artifactId>buspass-ws</artifactId>
-    <name>Bus pass web service</name>
-    <version>1.0.0-SNAPSHOT</version>
+    <groupId>com.cgonul</groupId>
+    <artifactId>drools-spring-boot</artifactId>
+    <name>Drools with spring boot</name>
+    <version>0.0.0.1</version>
     <packaging>jar</packaging>
 
     <description>
         An experiment in building a Drools web service with minimal code.
-        Based on the JBPM project bus pass example.
-        The forked project is slightly modified to be worked from intellij
+        Based on the JBPM project bus pass example. 
+        The actual project can be found https://github.com/gratiartis/buspass-ws.
     </description>
 
     <properties>
@@ -22,8 +22,6 @@
         <kie.version>6.1.0.Final</kie.version>
     </properties>
 
-
-    <!-- Transitively bring in the Spring IO Platform Bill-of-Materials `pom.xml` -->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -61,8 +59,8 @@
             <version>4.4</version>
         </dependency>
     </dependencies>
-    <build>
-
+    
+	<build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -77,18 +75,10 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <configuration>
-                    <downloadSources>true</downloadSources>
-                    <downloadJavadocs>true</downloadJavadocs>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>
