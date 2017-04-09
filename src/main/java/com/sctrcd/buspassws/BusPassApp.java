@@ -29,7 +29,7 @@ public class BusPassApp {
 
         StringBuilder sb = new StringBuilder("Application beans:\n");
         for (String beanName : beanNames) {
-            sb.append(beanName + "\n");
+            sb.append(beanName).append("\n");
         }
         log.info(sb.toString());
     }

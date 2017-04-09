@@ -14,28 +14,23 @@ import com.sctrcd.buspassws.facts.Person;
 @RestController
 public class BusPassController {
 
-    private static Logger log = LoggerFactory.getLogger(BusPassController.class);
+	private static Logger log = LoggerFactory.getLogger(BusPassController.class);
 
-    private final BusPassService busPassService;
+	private final BusPassService busPassService;
 
-    @Autowired
-    public BusPassController(BusPassService busPassService) {
-        this.busPassService = busPassService;
-    }
+	@Autowired
+	public BusPassController(BusPassService busPassService) {
+		this.busPassService = busPassService;
+	}
 
-    @RequestMapping(value = "/buspass", 
-            method = RequestMethod.GET, produces = "application/json")
-    public BusPass getQuestions(
-            @RequestParam(required = true) String name,
-            @RequestParam(required = true) int age) {
+	@RequestMapping (value = "/buspass", method = RequestMethod.GET, produces = "application/json")
+	public BusPass getQuestions(@RequestParam (required = true) String name, @RequestParam (required = true) int age) {
 
-        Person person = new Person(name, age);
+		Person person = new Person(name, age);
 
-        log.debug("Bus pass request received for: " + person);
-        
-        BusPass busPass = busPassService.getBusPass(person);
+		log.debug("Bus pass request received for: " + person);
 
-        return busPass;
-    }
+		return busPassService.getBusPass(person);
+	}
 
 }
