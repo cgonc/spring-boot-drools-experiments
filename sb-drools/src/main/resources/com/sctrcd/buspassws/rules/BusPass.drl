@@ -2,14 +2,12 @@ package com.sctrcd.busspassws.rules
 
 import com.sctrcd.buspassws.facts.*;
 
-
 declare IsAdult
 	person: Person
 end
 declare IsChild
 	person: Person
 end
-
 
 rule IsChildPolicy when
     p : Person( age < 16 )
