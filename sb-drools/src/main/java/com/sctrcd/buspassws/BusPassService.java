@@ -19,13 +19,13 @@ import com.sctrcd.buspassws.facts.Person;
 @Service
 public class BusPassService {
 
-	private static Logger log = LoggerFactory.getLogger(BusPassService.class);
+	private static Logger logger = LoggerFactory.getLogger(BusPassService.class);
 
 	private final KieContainer kieContainer;
 
 	@Autowired
 	public BusPassService(KieContainer kieContainer) {
-		log.info("Initialising a new bus pass session.");
+		logger.info("Initialising a new bus pass session.");
 		this.kieContainer = kieContainer;
 	}
 
@@ -48,17 +48,11 @@ public class BusPassService {
 	private BusPass findBusPass(KieSession kieSession) {
 
 		// Find all BusPass facts and 1st generation child classes of BusPass.
-		ObjectFilter busPassFilter = new ObjectFilter() {
-
-			@Override
-			public boolean accept(Object object) {
-				return BusPass.class.equals(object.getClass()) || BusPass.class.equals(object.getClass().getSuperclass());
-			}
-		};
+		ObjectFilter busPassFilter = object -> BusPass.class.equals(object.getClass()) || BusPass.class.equals(object.getClass().getSuperclass());
 
 		printFactsMessage(kieSession);
 
-		List<BusPass> facts = new ArrayList<BusPass>();
+		List<BusPass> facts = new ArrayList<>();
 		for(FactHandle handle : kieSession.getFactHandles(busPassFilter)){
 			facts.add((BusPass) kieSession.getObject(handle));
 		}
@@ -73,7 +67,6 @@ public class BusPassService {
 	 * Print out details of all facts in working memory.
 	 * Handy for debugging.
 	 */
-	@SuppressWarnings ("unused")
 	private void printFactsMessage(KieSession kieSession) {
 		Collection<FactHandle> allHandles = kieSession.getFactHandles();
 

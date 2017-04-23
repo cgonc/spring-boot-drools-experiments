@@ -24,12 +24,9 @@ public class BusPassController {
 	}
 
 	@RequestMapping (value = "/buspass", method = RequestMethod.GET, produces = "application/json")
-	public BusPass getQuestions(@RequestParam (required = true) String name, @RequestParam (required = true) int age) {
-
+	public BusPass getQuestions(@RequestParam String name, @RequestParam int age) {
 		Person person = new Person(name, age);
-
 		log.debug("Bus pass request received for: " + person);
-
 		return busPassService.getBusPass(person);
 	}
 
